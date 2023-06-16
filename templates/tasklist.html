@@ -4,7 +4,7 @@
 {% for task in tasks %}
 
 <div class="alert alert-primary">
-    <p>{{task.content}}   {{task.created_at}}</p>
+    <p>{{task.content}}   {{task.created_at.strftime('%Y-%M-%d')}}</p>
 </div>
 {% endfor %}
 {% endblock body%}

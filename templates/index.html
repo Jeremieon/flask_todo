@@ -1,21 +1,11 @@
 {% extends 'base.html' %} 
-{% block head %} 
-
-{% endblock head %} 
-<div class="form-floating mb-3">
-  <input type="text" class="form-control" name="content" id="content" placeholder="Enter your Task Here">
-  <label for="floatingInput" class="text-success">Task {{task.id}}</label>
-  <button type="submit" class="btn btn-info btn-outline-danger">Update</button>
-</div>
-
-
 
 {% block body %}
 <div class="all-element">
 <form action="/" method="POST">
   <div class="input-group my-4 ">
-    <input type="text" class="form-control " placeholder="Enter your Task Here" style="width: 600px;">
-    <button class="btn btn-outline-success" type="submit" id="button-addon2">Add Task</button>
+    <input type="text" class="form-control " name="content" placeholder="Enter your Task Here" style="width: 600px;">
+    <button class="btn btn-outline-success bg-info text-light" type="submit" >Add Task</button>
   </div>
 </form>
 {% if tasks|length < 1 %}
@@ -24,11 +14,12 @@
 
   {% for task in tasks %}
   <div class="w-100">
-    <div class="alert alert-{{ task.color_me }} w-100" role="alert">
-      {{ task.content }} 
-      <div>
-        <a href="delete/{{task.id}}">Delete</a>
-        <a href="update/{{task.id}}">Update</a>
+    <div class="alert alert-{{ task.color_me }} w-100 map ">
+     <div class="fs-3 fw-light">{{ task.content }} </div> 
+      <div class="mt-2">
+        <small class="text-mute">{{task.created_at.strftime('%Y-%M-%d')}}</small>&nbsp;
+        <a href="delete/{{task.id}}"><img src="/static/images/del_icon.png" alt="delete" width="25" height="25"></a>&nbsp;
+        <a href="update/{{task.id}}"><img src="/static/images/edit.png" alt="delete" width="25" height="25"></a>
       </div>
     </div>
   </div>

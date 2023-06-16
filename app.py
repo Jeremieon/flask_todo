@@ -39,7 +39,7 @@ db.create_all()
 def RetrieveDataList():
     tasks = Todo.query.order_by(Todo.id.desc()).all()
     return render_template('tasklist.html',tasks = tasks)
-
+#api get
 @app.route('/api/tasks', methods=['GET'])
 def get_api_data():
     tasks = Todo.query.order_by(Todo.id.desc()).all()
@@ -48,7 +48,7 @@ def get_api_data():
 
 @app.route('/',methods=['POST','GET'])
 def home():
-    data_list = ['danger','info','primary','secondary','success','warning','dark','muted','black',]
+    data_list = ['danger','info','primary','secondary','success','dark','warning']
     colors = choice(data_list)
     if request.method == 'POST':
         task_content = request.form['content']
@@ -61,13 +61,13 @@ def home():
         except:
             return 'There was an error while adding the task try again'
     else:
-        tasks = Todo.query.all()
+        tasks = Todo.query.order_by(Todo.id.desc()).all()
         return render_template("index.html",tasks=tasks)
 
 #post api
 @app.route('/api/tasks', methods=['POST'])
 def create_tasks():
-    data_list = ['danger','info','primary','secondary','success']
+    data_list = ['danger','info','primary','secondary','success','dark','warning']
     colors = choice(data_list)
     data = request.get_json()
     content = data.get('content')

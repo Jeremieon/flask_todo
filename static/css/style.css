@@ -4,11 +4,15 @@
     box-sizing: border-box;
   }
 body{
-    background-image: url('/static/images/todo_illust.jpeg');
+    background-image: url('/static/images/majesty.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
 }
 
 .navname{
     font-family: 'Delius', cursive;
+    font-size: x-large;
 }
 
 .all-element{
@@ -16,9 +20,13 @@ body{
     width: 800px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin:auto auto;
-    border:solid red 1px;
-    background-color: antiquewhite;
+}
+
+.map{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
