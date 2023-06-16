@@ -1,4 +1,24 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+  * {
+    box-sizing: border-box;
+  }
 body{
     background-image: url('/static/images/todo_illust.jpeg');
 }
 
+.navname{
+    font-family: 'Delius', cursive;
+}
+
+.all-element{
+    height: auto;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:auto auto;
+    border:solid red 1px;
+    background-color: antiquewhite;
+}
