@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% for task in tasks %}
+
+<div class="alert alert-primary">
+    <p>{{task.content}}   {{task.created_at}}</p>
+</div>
+{% endfor %}
+{% endblock body%}
+
+
