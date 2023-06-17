@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+  }
+  main {
+    margin: 0 auto ;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+    justify-content: center;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    border-radius: 15px;
+}
+
+body {
+  background-color: #FFFAF4;
+}
+
+.pito{
+    display: flex;
+    margin:0 auto;
+    justify-self: center;
+    margin-top: 55px;
+}

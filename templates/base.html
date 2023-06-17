@@ -12,9 +12,16 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand navname text-danger fs-3" href="/"><img src="/static/images/anchor.png" alt="delete" width="45" height="45"> Jeremiah - Todo App</a>
+            <a class="btn btn-outline-secondary" href="{{ url_for('logout')}}" >Logout</a>
         </div>
+   
+    
     </nav>
   <main class="container">
+    {% for message in get_flashed_messages() %}
+          <div class="alert alert-success text-center">{{ message }}</div>
+      {% endfor %}
+      <h2 class="fw-lighter text-danger text-center" >Welcome - {{session['username']}}</h2>
     {% block body %}
     {% endblock %}
     </main>

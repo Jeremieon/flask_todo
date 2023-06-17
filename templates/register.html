@@ -1,0 +1,26 @@
+{% extends 'baselogin.html' %}
+
+{% block login %}
+<main class="form-signin">
+    <form action="/register" method="post">
+      <h1 class="h1 mb-4 fw-lighter text-danger">{%block title %}Sign Up{%endblock%}</h1>
+
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="username"placeholder="Username">
+        <label for="username">Username</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" name="email"placeholder="example@xyz.com">
+        <label for="email">Email</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" name="password" placeholder="Password">
+        <label for="password">Password</label>
+      </div>
+      <button class="w-100 btn my-3 btn-lg btn-success" type="submit">Register</button>
+      <small>Already have an account? <a href="/login">Login</a></small>
+      
+    </form>
+  </main>
+{% endblock %}

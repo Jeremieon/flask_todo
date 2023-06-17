@@ -1,0 +1,21 @@
+{% extends 'baselogin.html' %}
+
+{% block login %}
+  <main class="form-signin">
+      <form action="/login" method="post" class="w-50">
+        <h1 class="h1 mb-4 fw-lighter text-danger">{%block title %}Login{%endblock%}</h1>
+  
+        <div class="form-floating mb-3 w-100">
+          <input type="text" class="form-control" name="username"placeholder="Username">
+          <label for="username">Username</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" name="password" placeholder="Password">
+          <label for="password">Password</label>
+        </div>
+        <button class="w-100 btn my-3 btn-lg btn-success" type="submit">Sign in</button>
+        <a href="/register" class="btn btn-primary w-100 " type="submit">Sign up</a>
+      </form>
+    </main>
+{% endblock %}
