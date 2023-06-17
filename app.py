@@ -103,10 +103,13 @@ def logout():
     return redirect(url_for('login'))
 #===============End of User Auth===================#
 
-# @app.route('/data/')
-# def RetrieveDataList():
-#     tasks = Todo.query.order_by(Todo.id.desc()).all()
-#     return render_template('tasklist.html',tasks = tasks)
+@app.route('/admin')
+def RetrieveDataList():
+    if session['username'] =='admin':
+        tasks = Todo.query.order_by(Todo.id.desc()).all()
+        return render_template('tasklist.html',tasks = tasks)
+    else:
+        return render_template('admin.html')
 #api get
 @app.route('/api/tasks', methods=['GET'])
 def get_api_data():
@@ -114,7 +117,7 @@ def get_api_data():
     serialized_tasks = [task.serialize() for task in tasks]
     return jsonify(serialized_tasks),200
 
-@app.route('/late',methods=['POST','GET'])
+@app.route('/home',methods=['POST','GET'])
 def home():
     data_list = ['danger','info','primary','secondary','success','dark','warning']
     colors = choice(data_list)

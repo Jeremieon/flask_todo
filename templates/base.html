@@ -12,10 +12,12 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand navname text-danger fs-3" href="/"><img src="/static/images/anchor.png" alt="delete" width="45" height="45"> Jeremiah - Todo App</a>
-            <a class="btn btn-outline-secondary" href="{{ url_for('logout')}}" >Logout</a>
+            <div class="d-flex d-flex-end">
+            <a class="btn btn-outline-warning">{{session['username']}}</a>
+            <a class="btn btn-outline-success mx-1" href="{{ url_for('RetrieveDataList')}}" >Admin</a>
+            <a class="btn btn-outline-danger" href="{{ url_for('logout')}}" >Logout</a>
         </div>
-   
-    
+        </div>
     </nav>
   <main class="container">
     {% for message in get_flashed_messages() %}

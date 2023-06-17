@@ -3,7 +3,7 @@
 
 {% for task in tasks %}
 
-<div class="alert alert-primary">
+<div class="alert alert-{{task.color_me}} w-100 map">
     <p>{{task.content}}   {{task.created_at.strftime('%Y-%M-%d')}}</p>
 </div>
 {% endfor %}
