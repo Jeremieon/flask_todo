@@ -7,7 +7,6 @@ from sqlalchemy.sql import func
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://jeremy@jeremy90k:AstraH07@jeremy90k.postgres.database.azure.com:5432/postgres'
-#DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
 app.secret_key = '8UjaMYHyGC_abrueAGwmQDH7yf7rhSH8E-GuWKd_5D4'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -135,11 +134,11 @@ def home():
         except:
             flash('There was an error while adding the task try again')
     else:
-        tasks =  Todo.query.filter_by(user_no=users.id).all()
+        tasks =  Todo.query.filter_by(user_no=users.id).order_by(Todo.id.desc()).all()
         return render_template("index.html",tasks=tasks)
          
 #post api
-@app.route('/api/tasks', methods=['POST'])
+@app.route('c/api/tasks', methods=['POST'])
 def create_tasks():
     data_list = ['danger','info','primary','secondary','success','dark','warning']
     colors = choice(data_list)
