@@ -7,7 +7,7 @@
 {% block body %}
 
 <div class="content">
-    <h1>Update Task</h1>
+    <h2 class="text-danger fw-light ">Update Task</h2>
     <form action="/update/{{task.id}}" method="POST">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" name="content" id="content" value="{{task.content}}">
