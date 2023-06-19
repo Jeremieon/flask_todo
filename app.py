@@ -1,13 +1,23 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask,render_template,request,redirect,url_for,jsonify,flash,session
 from flask_sqlalchemy import SQLAlchemy
 from random import choice
 from werkzeug.security import generate_password_hash,check_password_hash
 from sqlalchemy.sql import func
 
+load_dotenv()
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://jeremy@jeremy90k:AstraH07@jeremy90k.postgres.database.azure.com:5432/postgres'
-app.secret_key = '8UjaMYHyGC_abrueAGwmQDH7yf7rhSH8E-GuWKd_5D4'
+DATABASE_URL = 'postgresql://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
+    dbuser=os.environ['DBUSER'],
+    dbpass=os.environ['DBPASS'],
+    dbhost=os.environ['DBHOST'],
+    dbname=os.environ['DBNAME']
+)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+app.secret_key = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.app_context().push()

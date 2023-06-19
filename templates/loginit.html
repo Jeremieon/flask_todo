@@ -1,0 +1,7 @@
+{% extends 'baselogin.html' %}
+
+{% block login %}
+  <main class="form-signin">
+        <a class="w-100 btn my-3 btn-lg btn-warning" href="{{ url_for('logout')}}">Logout</a>
+    </main>
+{% endblock %}
