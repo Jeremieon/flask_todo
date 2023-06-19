@@ -134,11 +134,11 @@ def home():
         except:
             flash('There was an error while adding the task try again')
     else:
-        tasks =  Todo.query.filter_by(user_no=users.id).order_by(Todo.id.desc()).all()
+        tasks =  Todo.query.filter_by(user_no=users.id).all()
         return render_template("index.html",tasks=tasks)
          
 #post api
-@app.route('c/api/tasks', methods=['POST'])
+@app.route('/api/tasks', methods=['POST'])
 def create_tasks():
     data_list = ['danger','info','primary','secondary','success','dark','warning']
     colors = choice(data_list)
