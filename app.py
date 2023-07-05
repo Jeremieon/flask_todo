@@ -71,13 +71,18 @@ def create_user():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        password_hash = generate_password_hash(password)
-        user = User(username=username, email=email, password=password_hash)
-        db.session.add(user)
-        db.session.commit()
+        if not username and not email and not password:
+            flash('Registration failed,please try again!!')
+            return render_template('register.html')
+        elif request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
+        
+            password_hash = generate_password_hash(password)
+            user = User(username=username, email=email, password=password_hash)
+            db.session.add(user)
+            db.session.commit()
 
-        flash('Registration successful. Please log in.')
-        return redirect(url_for('login'))
+            flash('Registration successful. Please log in.')
+            return redirect(url_for('login'))
     return render_template('register.html')
 
 #protected
@@ -91,11 +96,12 @@ def dashboard():
 # Login Route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
         
         # Find the user in the database
+        User.query.filter
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.password, password):
@@ -104,6 +110,7 @@ def login():
             return redirect(url_for('dashboard'))
 
         flash('Invalid username or password.')
+    flash('Enter username or password.')
     return render_template('login.html')
 
 @app.route('/logout')
@@ -154,8 +161,8 @@ def create_tasks():
     colors = choice(data_list)
     data = request.get_json()
     content = data.get('content')
-    
-    new_tasks = Todo(content=content,color_me=colors)
+    user = data.get('user_no')
+    new_tasks = Todo(content=content,color_me=colors,user_no=user)
 
     db.session.add(new_tasks)
     db.session.commit()
@@ -205,10 +212,8 @@ def update_tasks(task_id):
     if task:
         data = request.get_json()
         content = data.get('content')
-        color_me =data.get('color_me')
 
         task.content = content
-        task.color_me = color_me
 
         db.session.commit()
 
